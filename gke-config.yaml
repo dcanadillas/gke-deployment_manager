@@ -1,0 +1,16 @@
+imports:
+  - path: cluster.py
+
+resources:
+  - name: gke-template
+    type: cluster.py
+    properties:
+      CLUSTER_NAME: 'dcanadillas-dm'
+      CLUSTER_ZONE: 'europe-west1-c'
+      NUM_NODES: 4
+      POOL_NAME: gke-pool
+      gke-nodepool: true
+
+outputs:
+  - name: endpoint
+    value: $(ref.gke-template.endpoint)
